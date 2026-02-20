@@ -159,6 +159,8 @@ class CustomTextEditState extends State<CustomTextEdit> with TextInputClient {
     if (hasInputConnection) {
       _connection!.show();
     } else {
+      final viewId = View.of(context).viewId;
+
       final config = TextInputConfiguration(
         inputType: widget.inputType,
         inputAction: widget.inputAction,
@@ -166,6 +168,7 @@ class CustomTextEditState extends State<CustomTextEdit> with TextInputClient {
         autocorrect: false,
         enableSuggestions: false,
         enableIMEPersonalizedLearning: false,
+        viewId: viewId,
       );
 
       _connection = TextInput.attach(this, config);
